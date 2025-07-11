@@ -1,0 +1,65 @@
+@use './colors' as *;
+@use './components' as *;
+
+.privacy{
+
+	.wrapper{
+		max-width: 700px;
+	}
+
+
+	&-text,
+	&-list-item,
+	&-ulList{
+		text-align: justify;
+		font-size: 1.4rem;
+	}
+
+
+	&-title{
+		margin-top: 1em;
+		padding: .5em;
+		text-align: center;
+		font-size: 1.8rem;
+	}
+
+	&-text{
+		align-self: start;
+		padding: 1em 0.7em;
+	}
+
+	&-list-item{
+		padding: 0.7em;
+	}
+
+	&-ulList{
+
+		margin-top: .4em;
+
+		&-item{
+			padding: 0.1em;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+
+	.privacy{
+
+		.section-header{
+			margin-top: 3em;
+		}
+
+		&-text,
+		&-list-item,
+		&-ulList{
+
+			font-size: 1.7rem;
+		}
+		
+		&-title{
+
+			font-size: 2.2rem;
+		}
+	}
+}

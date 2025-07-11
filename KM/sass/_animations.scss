@@ -1,0 +1,32 @@
+@use './colors' as *;
+@use './components' as *;
+
+//Gallery
+// POPUP open
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+// Popup close
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+//COOKIE
+@keyframes show-cookies {
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
