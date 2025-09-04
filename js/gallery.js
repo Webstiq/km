@@ -1,5 +1,4 @@
-const images = document.querySelectorAll('.gallery__item-img')
-const image = document.querySelector('.gallery__item-img')
+const galleryButtons = document.querySelectorAll('.gallery__item')
 const popup = document.querySelector('.gallery__popup')
 const popupImg = document.querySelector('.gallery__popup-img')
 const popupCloseBtn = document.querySelector('.gallery__popup-close')
@@ -8,67 +7,78 @@ const popupRightBtn = document.querySelector('.gallery__popup-arrow--right')
 
 let currentImgIndex
 
-const showPopup = e => {
-	popup.classList.toggle('popup-img--active')
+const trapFocusPopup = e => {
+	const focusable = Array.from(
+		popup.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])')
+	)
+	const first = focusable[0]
+	const last = focusable[focusable.length - 1]
 
-	popupImg.src = e.target.src
-	currentImgIndex = parseInt(e.target.getAttribute('id'))
-
-	images.forEach(item => {
-		item.setAttribute('tabindex', -1)
-	})
+	if (e.key === 'Tab') {
+		if (e.shiftKey) {
+			if (document.activeElement === first) {
+				e.preventDefault()
+				last.focus()
+			}
+		} else {
+			if (document.activeElement === last) {
+				e.preventDefault()
+				first.focus()
+			}
+		}
+	}
 }
 
-images.forEach((item, index) => {
-	item.addEventListener('click', showPopup)
-	item.addEventListener('keydown', e => {
-		if (e.code === 'Enter' || e.keyCode === 13) {
-			showPopup(e)
-		}
-	})
-	item.setAttribute('id', index)
+const showPopup = e => {
+	const button = e.currentTarget
+	popup.classList.add('popup-img--active')
+
+	popupImg.src = button.dataset.src
+	popupImg.alt = button.dataset.alt
+	currentImgIndex = parseInt(button.getAttribute('data-index'))
+
+	// Block gallery buttons
+	galleryButtons.forEach(btn => (btn.disabled = true))
+
+	document.addEventListener('keydown', trapFocusPopup)
+	popupCloseBtn.focus()
+}
+
+galleryButtons.forEach((button, index) => {
+	button.addEventListener('click', showPopup)
+	button.setAttribute('data-index', index)
 })
 
 const nextImg = () => {
-	if (currentImgIndex < images.length - 1) {
-		currentImgIndex++
-		popupImg.src = images[currentImgIndex].src
-	} else {
-		currentImgIndex = 0
-		popupImg.src = images[currentImgIndex].src
-	}
+	currentImgIndex = (currentImgIndex + 1) % galleryButtons.length
+	const nextBtn = galleryButtons[currentImgIndex]
+	popupImg.src = nextBtn.dataset.src
+	popupImg.alt = nextBtn.dataset.alt
 }
 
 const previousImg = () => {
-	if (currentImgIndex > 0) {
-		currentImgIndex--
-		popupImg.src = images[currentImgIndex].src
-	} else if (currentImgIndex < 1) {
-		currentImgIndex = images.length - 1
-		popupImg.src = images[currentImgIndex].src
-	}
+	currentImgIndex = (currentImgIndex - 1 + galleryButtons.length) % galleryButtons.length
+	const prevBtn = galleryButtons[currentImgIndex]
+	popupImg.src = prevBtn.dataset.src
+	popupImg.alt = prevBtn.dataset.alt
 }
 
 const popupArrowKey = e => {
-	if (e.code === 'ArrowRight' || e.keyCode === 39) {
-		nextImg()
-	} else if (e.key === 'ArrowLeft' || e.keyCode === 37) {
-		previousImg()
-	} else if (e.key === 'Escape' || e.keyCode === 27) {
-		closePopup()
-	}
+	if (e.code === 'ArrowRight') nextImg()
+	else if (e.code === 'ArrowLeft') previousImg()
+	else if (e.code === 'Escape') closePopup()
 }
 
 const closePopup = () => {
 	popup.classList.add('popup-img--fadeOut')
 	setTimeout(() => {
-		popup.classList.remove('popup-img--active')
-		popup.classList.remove('popup-img--fadeOut')
+		popup.classList.remove('popup-img--active', 'popup-img--fadeOut')
 	}, 500)
 
-	images.forEach(item => {
-		item.setAttribute('tabindex', 0)
-	})
+	// Unblock gallery buttons
+	galleryButtons.forEach(btn => (btn.disabled = false))
+	document.removeEventListener('keydown', trapFocusPopup)
+	galleryButtons[currentImgIndex].focus()
 }
 
 // -----------------------------------------------------------------------
@@ -91,7 +101,6 @@ const handleTouchMove = e => {
 	endX = e.touches[0].clientX // 	Current horizontal touch position
 	endY = e.touches[0].clientY // 	Current vertical touch position
 
-	
 	if (popup.classList.contains('popup-img--active')) {
 		e.preventDefault()
 	}
@@ -99,8 +108,8 @@ const handleTouchMove = e => {
 
 // Function called after touch is finished
 const handleTouchEnd = () => {
-	const diffX = startX - endX 
-	const diffY = startY - endY 
+	const diffX = startX - endX
+	const diffY = startY - endY
 
 	if (Math.abs(diffX) > Math.abs(diffY)) {
 		// Horizontal gesture
@@ -118,7 +127,7 @@ const handleTouchEnd = () => {
 		}
 	}
 
-	// Reset 
+	// Reset
 	startX = 0
 	startY = 0
 	endX = 0
@@ -128,10 +137,9 @@ const handleTouchEnd = () => {
 popup.addEventListener('touchstart', handleTouchStart)
 popup.addEventListener('touchmove', handleTouchMove)
 popup.addEventListener('touchend', handleTouchEnd)
-// -----------------------------------------------------------------------
-// -----------------------------------------------------------------------
+// // -----------------------------------------------------------------------
+// // -----------------------------------------------------------------------
 
-image.addEventListener('click', showPopup)
 popupCloseBtn.addEventListener('click', closePopup)
 popupLeftBtn.addEventListener('click', previousImg)
 popupRightBtn.addEventListener('click', nextImg)

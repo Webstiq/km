@@ -23,59 +23,58 @@
 
 <body>
 
-    <button class="burger-btn">
-        <div class="burger-btn__box">
-            <div class="burger-btn__bars"></div>
-        </div>
-    </button>
-
-    <nav class="nav">
-        <div class="wrapper">
-            <div class="nav__logo">
-                <a href="#" class="nav__logo-a"><img src="./img/logo-bg-remove.png" alt="logo"
-                        class="nav__logo-img"></a>
+    <nav>
+        <div class="nav">
+            <div class="wrapper">
+                <div class="nav__logo">
+                    <a href="#home" class="nav__logo-a"><img src="./img/logo.png" alt="Logo KM Usługi Ogólnobudowlane" class="nav__logo-img"></a>
+                </div>
+                <ul class="nav__box">
+                    <li><a href="#home" class="nav__box-item">Home</a></li>
+                    <li><a href="#aboutus" class="nav__box-item">O nas</a></li>
+                    <li><a href="#service" class="nav__box-item">Nasze usługi</a></li>
+                    <li><a href="./gallery.html" class="nav__box-item">Nasze realizacje</a></li>
+                </ul>
+                <a href="#contact" class="nav__btn call-to-btn">Kontakt</a>
             </div>
-            <div class="nav__box">
-                <a href="#aboutus" class="nav__box-item">O nas</a>
-                <a href="#service" class="nav__box-item">Nasze usługi</a>
-                <a href="./gallery.html" class="nav__box-item">Nasze realizacje</a>
-            </div>
-            <a href="#contact" class="nav__btn call-to-btn" onclick="void(0)">Kontakt</a>
         </div>
 
+        <button id="burger-btn"  type="button" class="burger-btn" aria-controls="nav-mobile" aria-expanded="false" aria-label="Otwórz menu">
+            <div class="burger-btn__box">
+                <div class="burger-btn__bars"></div>
+            </div>
+        </button>
+
+        <div id="nav-mobile" class="nav-mobile" aria-hidden="true" aria-label="Menu mobilne" >
+            <ul class="nav-mobile__box">
+                <li><a href="#home" class="nav-mobile__link">Home</a></li>
+                <li><a href="#aboutus" class="nav-mobile__link">O nas</a></li>
+                <li><a href="#service" class="nav-mobile__link">Usługi</a></li>
+                <li><a href="./gallery.html" class="nav-mobile__link">Realizacje</a></li>
+                <li><a href="#contact" class="nav-mobile__link">Kontakt</a></li>
+            </ul>
+        </div>
 
     </nav>
 
-
-    <nav class="nav-mobile">
-        <div class="nav-mobile__box">
-            <a href="#" class="nav-mobile__link" onclick="void(0)">Home</a>
-            <a href="#aboutus" class="nav-mobile__link" onclick="void(0)">O nas</a>
-            <a href="#service" class="nav-mobile__link" onclick="void(0)">Usługi</a>
-            <a href="./gallery.html" class="nav-mobile__link" onclick="void(0)">Realizacje</a>
-            <a href="#contact" class="nav-mobile__link" onclick="void(0)">Kontakt</a>
-        </div>
-    </nav>
-
-    <div class="cookie-box">
-
+    <div class="cookie-box" role="region" aria-label="Informacja o cookies" aria-live="polite">
         <div class="wrapper">
-            <p class="cookie-box__text">Nasza strona wykorzystuje pliki cookies <a href="./privacy.html"
-                    class="cookie-box__link" onclick="void(0)">[ Więcej informacji ]</a></p>
-            <button class="cookie-box__btn call-to-btn">Rozumiem</button>
+            <p id="cookieMsg" class="cookie-box__text">Nasza strona wykorzystuje pliki cookies <a href="./privacy.html"
+                    class="cookie-box__link" aria-label="Przeczytaj więcej o polityce prywatności">[ Więcej informacji ]</a></p>
+            <button type="button" class="cookie-box__btn call-to-btn" aria-describedby="cookieMsg">Rozumiem</button>
         </div>
     </div>
 
-    <header class="header section">
-        <h1 class="header__title">KM<br>
-            <p class="header__title-paragraf">Kompleksowe Usługi Ogólnobudowlane</p>
+    <header id="home" class="header section" aria-label="Strona główna">
+        <h1 class="header__title">KM
+            <span class="header__title-paragraf">Kompleksowe Usługi Ogólnobudowlane</span>
         </h1>
-        <div class="header__shadow"></div>
+        <div class="header__shadow" aria-hidden="true"></div>
     </header>
 
     <main class="main">
 
-        <section class="aboutus section section-padding white-section" id="aboutus">
+        <section id="aboutus" class="aboutus section section-padding white-section">
 
             <div class="wrapper">
 
@@ -126,17 +125,17 @@
         <section class="hero-img section section-padding">
             <h2 class="section-header">KM</h2>
             <p class="hero-img__text">Profesjonalizm, Innowacyjność, Rzetelność, Doświadczenie, Zaufanie</p>
-            <a href="#contact" class="hero-img__btn call-to-btn">Skontaktuj się z nami</a>
-            <div class="hero-img__shadow"></div>
+            <a href="#contact" class="hero-img__btn call-to-btn" aria-label="Skontaktuj się z nami – przejdź do formularza kontaktowego">Skontaktuj się z nami</a>
+            <div class="hero-img__shadow" aria-hidden="true"></div>
         </section>
 
-        <section class="service section section-padding white-section" id="service">
+        <section id="service" class="service section section-padding white-section">
 
-            <div class="wrapper">
+            <article class="wrapper">
                 <h2 class="section-header">Nasze usługi</h2>
-                <div class="service__boxes">
+                <article class="service__boxes">
 
-                    <div class="service__box">
+                    <article class="service__box">
                         <img src="./img/service1.jpg" alt="dwóch mężczyzn kładących wełnę mineralną na elewacje"
                             class="service__box-img">
                         <div class="service__box-info">
@@ -149,8 +148,8 @@
                                 nie tylko estetykę, ale także doskonałą ochronę cieplną swojego domu.
                             </p>
                         </div>
-                    </div>
-                    <div class="service__box ">
+                    </article>
+                    <article class="service__box">
                         <img src="./img/service2.jpg" alt="ręczne okucia blacharskie"
                             class="service__box-img service__box-img--right">
                         <div class="service__box-info service__box-info--right">
@@ -162,9 +161,9 @@
                                 estetyczne i dopasowane do indywidualnych potrzeb.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="service__box">
+                    <article class="service__box">
                         <img src="./img/service3.jpg" alt="ręce mężczyzny kładące płytkę białą na ścianę"
                             class="service__box-img">
                         <div class="service__box-info">
@@ -176,8 +175,8 @@
                                 podłogi i ściany będą wyglądały stylowo i zachowają trwałość na lata.
                             </p>
                         </div>
-                    </div>
-                    <div class="service__box ">
+                    </article>
+                    <article class="service__box">
                         <img src="./img/service4.jpg" alt="mężczyzna wiercący w ścianie w remontowanym mieszkaniu"
                             class="service__box-img service__box-img--right">
                         <div class="service__box-info service__box-info--right">
@@ -191,9 +190,9 @@
                                 wykończenia.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="service__box">
+                    <article class="service__box">
                         <img src="./img/service5.jpg" alt="wiadra z różnokolorowymi farbami" class="service__box-img">
                         <div class="service__box-info">
                             <h3 class="service__box-info-title">Profesjonalne malowanie wnętrz i elewacji</h3>
@@ -204,8 +203,8 @@
                                 i idealny efekt końcowy.
                             </p>
                         </div>
-                    </div>
-                    <div class="service__box ">
+                    </article>
+                    <article class="service__box">
                         <img src="./img/service6.jpg" alt="poskładane białe meble kuchnne w stylu nowoczesnym"
                             class="service__box-img service__box-img--right">
                         <div class="service__box-info service__box-info--right">
@@ -217,9 +216,9 @@
                                 będą stabilne, funkcjonalne i gotowe do użytku od razu po złożeniu.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="service__box">
+                    <article class="service__box">
                         <img src="./img/service7.jpg"
                             alt="elektryk trzymający w swoich rękach kabel prądowy bez wtyczki"
                             class="service__box-img">
@@ -233,8 +232,8 @@
                                 dostosowane do nowych potrzeb.
                             </p>
                         </div>
-                    </div>
-                    <div class="service__box ">
+                    </article>
+                    <article class="service__box">
                         <img src="./img/service8.jpg" alt="mężczyzna kładący wełnę mineralną w domu"
                             class="service__box-img service__box-img--right">
                         <div class="service__box-info service__box-info--right">
@@ -246,9 +245,9 @@
                                 znaczne zmniejszenie strat ciepła i poprawę komfortu w Twoim domu.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="service__box">
+                    <article class="service__box">
                         <img src="./img/service9.jpg"
                             alt="pomieszczenie w którym ułożono strukturę aranżacyjną z karton-gipsu"
                             class="service__box-img">
@@ -262,20 +261,20 @@
                                 funkcjonalne i trwałe rozwiązania do każdego pomieszczenia.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
                 </div>
             </div>
         </section>
 
-        <section class="chooseus section section-padding">
+        <section class="chooseus section section-padding" aria-labelledby="chooseus-heading">
             <div class="wrapper">
 
 
                 <div class="chooseus__box">
 
                     <div class="chooseus__box-top">
-                        <h2 class="section-header">Dlaczego warto nas wybrać?</h2>
+                        <h2 id="chooseus-heading" class="section-header">Dlaczego warto nas wybrać?</h2>
                         <p class="chooseus__box-top-text">Zaufaj naszej firmie i skorzystaj z usług ogólnobudowlanych,
                             które łączą doświadczenie, nowoczesność i tradycję. Jeśli szukasz solidnego partnera
                             budowlanego, skontaktuj się z nami już dziś i sprawdź, jak możemy pomóc w realizacji Twoich
@@ -293,7 +292,7 @@
                         <p class="chooseus__box-down-text"><strong>Jakość i terminowość</strong> realizacji na każdym
                             etapie inwestycji.</p>
                     </div>
-                    <a href="#contact" class="chooseus__box-btn call-to-btn">Skontaktuj się z nami</a>
+                    <a href="#contact" class="chooseus__box-btn call-to-btn" aria-label="Skontaktuj się z nami – przejdź do formularza kontaktowego" >Skontaktuj się z nami</a>
 
                 </div>
 
@@ -305,7 +304,7 @@
                             ogólnobudowlanych, które łączą doświadczenie, nowoczesność i tradycję. Jeśli szukasz
                             solidnego partnera budowlanego, skontaktuj się z nami już dziś i sprawdź, jak możemy pomóc w
                             realizacji Twoich projektów budowlanych!</p>
-                        <a href="#contact" class="chooseus__box-desktop-btn call-to-btn">Skontaktuj się z nami</a>
+                        <a href="#contact" class="chooseus__box-desktop-btn call-to-btn" aria-label="Skontaktuj się z nami – przejdź do formularza kontaktowego" >Skontaktuj się z nami</a>
                     </div>
 
                     <div class="chooseus__box-desktop-right">
@@ -330,11 +329,9 @@
             <h2 class="section-header">Gdzie działamy?</h2>
             <div class="wrapper">
 
-
                 <div class="area__box-text">
                     <p class="area__box-text-paragraf">Naszym głównym obszarem działań są: </p>
                     <ul class="area__box-text-items">
-
                         <li class="area__box-text-item"><strong>Warszawa</strong> oraz okolice</li>
                         <li class="area__box-text-item"><strong>Kraków</strong> oraz okolice</li>
                         <li class="area__box-text-item"><strong>Wrocław</strong> oraz okolice</li>
@@ -348,66 +345,68 @@
 
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.6471417594043!2d21.00959567621118!3d52.24979255620033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc6f6b03577b%3A0x2b6b5d2f7d626b9b!2sRynek%20Starego%20Miasta%2C%2000-272%20Warszawa!5e0!3m2!1spl!2spl!4v1741344751954!5m2!1spl!2spl"
-                    area__box-map width="400" height="300" class="responsive-map area__box-map" style="border:0;"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    title="Mapa lokalizacji firmy KM Usługi Ogólnobudowlane" class="responsive-map area__box-map"
+                    width="400" height="300" class="responsive-map area__box-map" style="border:0;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
             </div>
 
         </section>
 
-        <section class="contact section section-padding white-section" id="contact">
+        <section id="contact" class="contact section section-padding white-section">
             <div class="wrapper">
                 <h2 class="section-header">Skontaktuj się z nami!</h2>
 
                 <div class="contact__box">
-                    <p class="contact__box-text"></p>
-
                     <h3 class="contact__box-title">Zadzoń do nas na jeden z poniższych numerów:</h3>
-                    <p class="contact__box-text"><b>Telefon:</b> 117131171</p>
-                    <p class="contact__box-text"><b>Telefon:</b> 117131171</p>
+                    <p class="contact__box-text"><strong>Telefon:</strong> <a href="tel:117131171">117 131 171</a></p>
+                    <p class="contact__box-text"><strong>Telefon:</strong> <a href="tel:117131222">117 131 222</a></p>
 
                     <p class="contact__box-text">Możesz również do nas napisać korzystając z poniżeszego formularza</p>
 
                     <p class="contact__box-text">Jeśli nie otrzymasz od nas odpowiedzi w przeciągu kilku dni sprawdź czy
                         wiadomość od nas nie trafiła do spamu. Możesz też wysłać wiadomość na nasz e-mail kontaktowy:
-                        kontakt@km.com</p>
+                        <a href="mailto:kontakt@test.com">kontakt@test.com</a>
+                    </p>
 
                 </div>
 
-                <form class="contact__form" action="./php/mail.php" method="post">
-                    <h3 class="contact__form-title">Formularz kontaktowy</h3>
+                <form class="contact__form" action="./php/mail.php" method="post" aria-labelledby="contact-form-title">
+                    <h3 id="contact-form-title" class="contact__form-title">Formularz kontaktowy</h3>
                     <div class="contact__form-top">
-                        <label for="name" class="contact__form-label">Imię i nazwisko:</label>
-                        <input type="text" class="contact__form-input" id="name" name="name">
+                        <label for="name" class="contact__form-label">Imię i nazwisko:<span
+                                aria-hidden="true">*</span></label>
+                        <input id="name" type="text" name="name" class="contact__form-input" autocomplete="name" required>
 
-                        <label for="email" class="contact__form-label">Adres e-mail:</label>
-                        <input type="text" class="contact__form-input" id="email" name="email">
+                        <label for="email" class="contact__form-label">Adres e-mail:<span
+                                aria-hidden="true">*</span></label>
+                        <input id="email" type="email" name="email" class="contact__form-input" autocomplete="email" required>
                     </div>
 
-                    <label for="msg" class="contact__form-label">Wiadomość:</label>
-                    <textarea id="msg" class="contact__form-textarea" name="msg"></textarea>
+                    <label for="msg" class="contact__form-label">Wiadomość:<span aria-hidden="true">*</span></label>
+                    <textarea id="msg" name="msg" class="contact__form-textarea" required></textarea>
 
-                    <p class="contact__form-error"></p>
 
-                    <input type="checkbox" id="consent" name="consent" class="contact__form-consent-input">
+                    <input id="consent" type="checkbox" name="consent" class="contact__form-consent-input" required>
                     <label for="consent" class="contact__form-consent-label"> <span
-                            class="contact__form-consent-asterisk"> * </span>Wyrażam zgodę na przetwarzanie moich danych
-                        osobowych przez firmę KM Usługi Ogólnobudowlane z siedzibą w Warszawie, w celu
-                        udzielenia odpowiedzi, w tym przedłożenia oferty jeśli o nią pytam. Moje dane osobowe będą
-                        przetwarzane do czasu cofnięcia zgody lub przez okres niezbędny do ustalenia, dochodzenia lub
-                        obrony roszczeń. Mam prawo dostępu do danych, sprostowania, usunięcia lub ograniczenia
-                        przetwarzania, sprzeciwu, wniesienia skargi do organu nadzorczego i do przeniesienia danych.
-                        Polityka prywatności.
+                            class="contact__form-consent-asterisk"> * </span>Wyrażam zgodę na przetwarzanie moich
+                        danych
+                        osobowych przez firmę KM Usługi Ogólnobudowlane w celu udzielenia odpowiedzi, w tym
+                        przedstawienia oferty,
+                        jeśli o
+                        nią
+                        pytam. Dane będą przetwarzane zgodnie z polityką prywatności.
                     </label>
                     <p class="contact__form-consent-text"><span class="contact__form-consent-asterisk"> * </span> Pole
                         obowiązkowe</p>
 
-                    <button type="submit" class="contact__form-btn call-to-btn">Wyślij</button>
+                    <p class="contact__form-error" aria-live="polite"></p>
 
+                    <button type="submit" class="contact__form-btn call-to-btn">Wyślij</button>
 
                 </form>
 
-                <p class="contact__status "></p>
+                <p class="contact__status " aria-live="polite"></p>
 
             </div>
         </section>
@@ -415,52 +414,65 @@
     </main>
 
 
-    <footer class="footer section">
+    <footer class="footer section" aria-label="Stopka strony z danymi kontaktowymi i informacjami prawnymi">
 
         <div class="wrapper">
 
             <div class="footer__box">
 
                 <div class="footer__box-logo">
-                    <a href="#" class="footer__box-logo-a"><img src="./img/logo-bg-remove.png" alt="logo"
-                            class="footer__box-logo-img"></a>
+                    <a href="#home" class="footer__box-logo-a"><img src="./img/logo.png"
+                            alt="Logo KM Usługi Ogólnobudowlane" class="footer__box-logo-img"></a>
                 </div>
 
 
                 <div class="footer__box-company">
                     <h3 class="footer__box-title">Dane firmy</h3>
-                    <p class="footer__box-text">
-                        KM Usługi Ogólnobudowlane</p>
-                    <p class="footer__box-text">NIP: 000000</p>
-                    <p class="footer__box-text">REGON: 00000</p>
-                    <p class="footer__box-text">Ulica 1</p>
-                    <p class="footer__box-text">00-334 Warszawa</p>
+                    <ul>
+                        <li><p class="footer__box-text">KM Usługi Ogólnobudowlane</p></li>
+                        <li><p class="footer__box-text">NIP: 000000</p></li>
+                        <li><p class="footer__box-text">REGON: 00000</p></li>
+                        <li><p class="footer__box-text">Ulica 1</p></li>
+                        <li><p class="footer__box-text">00-334 Warszawa</p></li>
+                    </ul>
                 </div>
 
                 <div class="footer__box-contact">
                     <h3 class="footer__box-title">Kontakt</h3>
-                    <p class="footer__box-text">Telefon: 117131171</p>
-                    <p class="footer__box-text">Telefon: 117131171</p>
-                    <p class="footer__box-text">E-mail: kontakt@km.com</p>
-
+                    <ul>
+                        <li class="footer__box-text"><strong>Telefon:</strong> <a href="tel:117131171">117 131 171</a>
+                        </li>
+                        <li class="footer__box-text"><strong>Telefon:</strong> <a href="tel:117131171">117 131 171</a>
+                        </li>
+                        <li class="footer__box-text"><strong>E-mail:</strong> <a
+                                href="mailto:kontakt@test.com">kontakt@test.com</a></li>
+                    </ul>
                 </div>
 
                 <div class="footer__box-legal-information">
                     <h3 class="footer__box-title">Informacje</h3>
-                    <a href="./privacy.html" class="footer__box-legal-information-link">Polityka prywatności</a>
-                    <a href="./privacy.html" class="footer__box-legal-information-link">Ogólne warunki użytkowania
-                        strony internetowej</a>
+                    <ul>
+                        <li>
+                            <a href="./privacy.html" class="footer__box-legal-information-link">Polityka prywatności</a>
+                        </li>
+                        <li>
+                            <a href="./privacy.html" class="footer__box-legal-information-link">Ogólne warunki
+                                użytkowania
+                                strony internetowej</a>
+                        </li>
+                    </ul>
                 </div>
 
 
-                <div class="footer__box-social">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer__box-link"><i
-                            class="fab fa-facebook-square"></i></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer__box-link"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
+                <ul class="footer__box-social">
+                    <li><a href="#home" target="_blank" rel="noopener noreferrer" class="footer__box-link"
+                        aria-label="Facebook"><i class="fab fa-facebook-square" aria-hidden="true" ></i></a></li>
+                    <li><a href="#home" target="_blank" rel="noopener noreferrer" class="footer__box-link"
+                        aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
 
             </div>
+
         </div>
         <p class="footer__bottom-text">&copy; <span class="footer__year"></span> <strong>KM</strong> Kompleksowe Usługi
             Ogólnobudowlane </p>

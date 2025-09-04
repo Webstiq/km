@@ -29,6 +29,27 @@ textarea {
   resize: none;
 }
 
+ul {
+  list-style: none;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 2px;
+  transition: outline 0.2s;
+  outline: 2px solid #F4C201;
+  border-radius: 8px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline-offset: 2px;
+  transition: outline 0.2s;
+  outline: 4px solid #b02537;
+  border-radius: 8px;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -54,8 +75,16 @@ textarea {
   padding: 3em 2em;
 }
 
-.burger-btn {
+nav {
   position: fixed;
+  width: 100%;
+  height: 84px;
+  z-index: 1000;
+}
+
+.burger-btn {
+  position: absolute;
+  display: block;
   top: 20px;
   right: 20px;
   padding: 1.1em;
@@ -64,14 +93,15 @@ textarea {
   cursor: pointer;
   z-index: 100000;
 }
-.burger-btn:focus {
-  outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-}
 .burger-btn:hover .burger-btn__bars::after,
 .burger-btn:hover .burger-btn__bars::before {
   width: 100%;
+}
+.burger-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border: 1px solid #fff;
+  border-radius: 8px;
 }
 .burger-btn__box {
   position: relative;
@@ -99,6 +129,20 @@ textarea {
   transition-delay: 0.1s;
 }
 
+.burger-focus-white:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+.burger-focus-black:focus-visible {
+  outline: 2px solid #010101;
+  outline-offset: 2px;
+  border: 1px solid #010101;
+  border-radius: 8px;
+}
+
 .black-bars-color,
 .black-bars-color::after,
 .black-bars-color::before {
@@ -107,7 +151,7 @@ textarea {
 
 .nav-mobile {
   position: fixed;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -115,7 +159,8 @@ textarea {
   height: 100vh;
   background-color: #F4C201;
   transform: translateX(100%);
-  transition: transform 1s;
+  pointer-events: none;
+  transition: transform 1s, opacity 0.5s;
   z-index: 10000;
 }
 .nav-mobile__box {
@@ -124,6 +169,7 @@ textarea {
 }
 .nav-mobile__link {
   position: relative;
+  display: block;
   margin: 0.5em;
   padding: 0.5em 1em;
   font-size: 3.5rem;
@@ -158,6 +204,7 @@ textarea {
 
 .nav-mobile--active {
   transform: translateX(0);
+  pointer-events: auto;
 }
 
 @keyframes navMobileItemsAnimation {
@@ -185,6 +232,7 @@ textarea {
   align-items: center;
 }
 .nav__logo {
+  display: none;
   margin-left: 2em;
 }
 .nav__logo-img {
@@ -295,6 +343,7 @@ textarea {
   z-index: 10;
 }
 .header__title-paragraf {
+  display: block;
   padding: 0 0.2em;
   padding-top: 1em;
   text-align: center;
@@ -482,6 +531,9 @@ textarea {
   font-weight: 700;
   border-radius: 24px;
 }
+.chooseus__box-btn:focus, .chooseus__box-desktop-btn:focus {
+  outline: 4px solid #fff;
+}
 .chooseus__box-btn {
   margin: 1em 2em;
   padding: 0.8em 1.8em;
@@ -539,7 +591,7 @@ textarea {
   padding: 0 1em;
 }
 .contact__box {
-  padding-bottom: 2em;
+  margin: 3em 0;
 }
 .contact__box-title {
   padding: 1em 0;
@@ -549,6 +601,20 @@ textarea {
 .contact__box-text {
   padding: 0.7em 0;
   line-height: 20px;
+}
+.contact__box-text a {
+  color: #010101;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.contact__box-text a:hover,
+.contact__box-text a:focus {
+  color: #F4C201;
+  outline: none;
+}
+.contact__box-text a:focus {
+  outline: 2px solid #F4C201;
+  border-radius: 8px;
 }
 .contact__form {
   display: flex;
@@ -611,6 +677,7 @@ textarea {
 }
 .contact__form-consent-input {
   margin: 2em 0;
+  width: 100%;
 }
 .contact__form-consent-label {
   text-align: center;
@@ -707,6 +774,20 @@ textarea {
 .footer__box-text {
   padding-bottom: 0.3em;
 }
+.footer__box-text a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.footer__box-text a:hover,
+.footer__box-text a:focus {
+  color: #F4C201;
+  outline: none;
+}
+.footer__box-text a:focus {
+  outline: 2px solid #F4C201;
+  border-radius: 8px;
+}
 .footer__box-contact {
   width: 100%;
   margin: 1em;
@@ -719,6 +800,9 @@ textarea {
   padding: 1em 0;
   width: 100%;
   text-align: left;
+}
+.footer__box-social li {
+  display: inline;
 }
 .footer__box-link, .footer__box-legal-information-link {
   color: #fff;
@@ -939,12 +1023,6 @@ textarea {
   .section-header {
     font-size: 3rem;
   }
-  .burger-btn {
-    display: none;
-  }
-  .nav {
-    display: flex;
-  }
   .cookie-box__text {
     padding: 1em 2em;
     font-size: 2rem;
@@ -984,6 +1062,11 @@ textarea {
   }
   .service {
     padding: 4.5em 3.2em;
+  }
+  .service__box-img {
+    height: 300px;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .service__box-info-title {
     padding-top: 1.8em;
@@ -1053,6 +1136,18 @@ textarea {
   }
 }
 @media (min-width: 850px) {
+  .burger-btn {
+    display: none;
+  }
+  .nav-mobile {
+    display: none;
+  }
+  .nav {
+    display: flex;
+  }
+  .nav__logo {
+    display: block;
+  }
   .footer__box {
     width: 100%;
     justify-content: space-around;
@@ -1246,7 +1341,7 @@ textarea {
     margin-right: 0;
   }
   .header__title-paragraf {
-    font-size: 302rem;
+    font-size: 4rem;
     line-height: 48px;
   }
   .aboutus .wrapper {
@@ -1372,21 +1467,21 @@ textarea {
   border-radius: 8px;
   box-shadow: 0 0 15px #2e2e2e;
   transition: transform 0.4s;
-  cursor: pointer;
   overflow: hidden;
+  cursor: pointer;
 }
 .gallery__item:hover {
   transform: scale(1.2);
+}
+.gallery__item:focus {
+  outline: none;
+  border: 5px solid #F4C201;
 }
 .gallery__item-img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-.gallery__item-img:focus {
-  outline: none;
-  border: 5px solid #F4C201;
 }
 .gallery__popup {
   position: fixed;
@@ -1395,7 +1490,7 @@ textarea {
   left: 0;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(5px);
@@ -1418,11 +1513,12 @@ textarea {
   font-size: 3rem;
   color: #fff;
   background: none;
-  transition: transform 0.3s;
+  transition: transform 0.3s, color 0.3s;
   cursor: pointer;
 }
 .gallery__popup-close:hover, .gallery__popup-arrow:hover {
   transform: scale(1.2);
+  color: #F4C201;
 }
 .gallery__popup-close {
   top: 24px;
